@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/main.css">
+    <script src="https://kit.fontawesome.com/09e789e571.js" crossorigin="anonymous"></script>
+    <title>LightWALLET</title>
+</head>
+<body class="bg-gray-100 h-screen font-sans flex flex-col">
+    <div class="flex-1 flex flex-col justify-between">
+        <!-- Header -->
+        <div class="bg-color-primary-light text-white p-4">
+            <div class="w-20 text-color-blob font-bold text-3xl select-none">
+                <p class="text-color-white">Light<span class="text-color-blob">WALLET</span></p>
+              </div>
+            <h3 class="text-xl mt-5">Share your ideas and thoughts with other people around the world!</h3>
+        </div>
+
+        <!-- Messages -->
+        <div id="messages" class="p-4 flex flex-col space-y-4 overflow-y-auto h-[70vh]"></div>
+
+        <!-- Input Container -->
+        <div class="input-container bg-white p-4 border-t border-gray-200">
+            <div class="flex items-center space-x-2">
+                <input type="text" id="message" class="w-full p-2 border border-gray-300 rounded-lg" placeholder="Enter Message">
+                <button id="sendBtn" class="bg-color-primary-dark text-white px-4 py-2 rounded-lg hover:bg-color-blob">Send</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="/socket.io/socket.io.js"></script>
+    <script>
+        const socket = io();
+        const sendBtn = document.getElementById("sendBtn");
+        const messageInput = document.getElementById("message");
+        const allMessages = document.getElementById("messages");
+
+        const userId = Math.random().toString(36).substring(2, 9);
+
+socket.on("message", ({ senderId, message }) => {
+    const p = document.createElement("p");
+    p.classList.add("message", "max-w-xs", "p-2", "rounded-lg", "break-words", "text-sm", "shadow-sm");
+
+
+    if (senderId === userId) {
+
+        p.classList.add("bg-gray-300", "text-gray-800", "mr-auto", "rounded-bl-none"); 
+    } else {
+ 
+        p.classList.add("bg-green-100", "text-green-800", "ml-auto", "rounded-br-none"); 
+    }
+
+    p.innerText = message;
+    allMessages.appendChild(p);
+    allMessages.scrollTop = allMessages.scrollHeight; 
+});
+
+        sendBtn.addEventListener("click", () => {
+            const message = messageInput.value.trim();
+            if (message) {
+            
+                socket.emit("user-message", { senderId: userId, message });
+
+                messageInput.value = ""; 
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,22 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.btn{
+    @apply bg-color-blob px-9 py-3 rounded-md font-bold capitalize hover:opacity-85 ease-in duration-200;
+}
+.title {
+    @apply text-6xl md:text-6xl font-bold leading-snug bg-gradient-to-r from-orange-500 via-slate-50 to-slate-50 bg-clip-text text-transparent;
+}       
+.design {
+    @apply text-6xl md:text-6xl font-bold leading-snug bg-gradient-to-r from-fuchsia-900 to-slate-50 bg-clip-text text-transparent;
+}
+.design-sm {
+    @apply bg-gradient-to-r from-violet-800 via-violet-300 to-indigo-700 bg-clip-text text-transparent;
+}
+.design-lg {
+    @apply bg-gradient-to-r from-violet-800 via-violet-600 to-indigo-700 bg-clip-text text-transparent;
+}
+.fea-btn {
+    @apply  mt-8 font-bold text-lg text-white  animate-pulse hover:scale-105;
+}
