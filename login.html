@@ -1,0 +1,235 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>PROJECT</title>
+    <style>
+        *{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+/* universal colors */
+/* color: #e2e2e2; */
+
+
+.container{
+    min-height: 100vh;
+    padding: 10px;
+    display: grid;
+    grid-template-columns: auto 58%;
+    background-color: #fffefe;
+   
+}
+.left-container{
+    background-image: url(./img/login.png);
+    background-position: center;
+    background-size: contain;
+    
+}
+.right-container {
+   
+
+    background-color: rgb(255, 255, 255);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* form style --------------*/
+
+.form {
+    display: flex;
+    flex-direction: column;
+    gap: 35px;
+    max-width: 420px;
+    padding: 20px;
+    border-radius: 20px;
+    position: relative;
+    background-color: #181818;
+    color: #fff;
+    border: 1px solid #333;
+    box-shadow: 10px 10px 5px rgba(0, 0, 0, 0.387);
+  }
+  .signlink{
+    text-decoration: none;
+    color: #7853bd;
+  }
+  .title {
+    font-size: 38px;
+    font-weight: 600;
+    letter-spacing: -1px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    padding-left: 30px;
+    color: #e2e2e2;
+  }
+  
+  .title::before {
+    width: 18px;
+    height: 18px;
+  }
+  
+  .title::after {
+    width: 18px;
+    height: 18px;
+    animation: pulse 1s linear infinite;
+  }
+  
+  .title::before,
+  .title::after {
+    position: absolute;
+    content: "";
+    height: 16px;
+    width: 16px;
+    border-radius: 50%;
+    left: 0px;
+    background-color: #7853bd;
+  }
+  
+  .message, 
+  .signin {
+    font-size: 18px;
+    font-weight: 500;
+    font-family: sans-serif;
+    color: #e2e2e2;
+  }
+  
+  .flex {
+    display: flex;
+    width: 100%;
+    gap: 6px;
+  }
+  
+  .form label {
+    position: relative;
+  }
+  
+  .form label .input {
+    background-color: #333;
+    color: #fff;
+    width: 100%;
+    padding: 20px 05px 05px 10px;
+    outline: 0;
+    border: 1px solid rgba(105, 105, 105, 0.397);
+    border-radius: 10px;
+  }
+  
+  .input {
+    font-size: medium;
+  }
+  
+  .submit {
+    border: none;
+    outline: none;
+    padding: 10px;
+    border-radius: 10px;
+    color: #fff;
+    font-size: 16px;
+    transform: .3s ease;
+    background-color: #7458ad96;
+  }
+  
+  .submit:hover {
+    background-color: #3b1f7396;
+  }
+  .loader-head{
+    font-size: 35px;
+    color: #fff;
+  }
+  
+  @keyframes pulse {
+    from {
+      transform: scale(0.9);
+      opacity: 1;
+    }
+  
+    to {
+      transform: scale(1.8);
+      opacity: 0;
+    }
+  }
+  /* ends form style -------------------- */
+
+  /* LOADING ANIMATION STARTS ---------------- */
+
+
+
+
+@keyframes spin_4991 {
+  10% {
+    -webkit-transform: translateY(-102%);
+    transform: translateY(-102%);
+  }
+
+  25% {
+    -webkit-transform: translateY(-100%);
+    transform: translateY(-100%);
+  }
+
+  35% {
+    -webkit-transform: translateY(-202%);
+    transform: translateY(-202%);
+  }
+
+  50% {
+    -webkit-transform: translateY(-200%);
+    transform: translateY(-200%);
+  }
+
+  60% {
+    -webkit-transform: translateY(-302%);
+    transform: translateY(-302%);
+  }
+
+  75% {
+    -webkit-transform: translateY(-300%);
+    transform: translateY(-300%);
+  }
+
+  85% {
+    -webkit-transform: translateY(-402%);
+    transform: translateY(-402%);
+  }
+
+  100% {
+    -webkit-transform: translateY(-400%);
+    transform: translateY(-400%);
+  }
+}
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="left-container">
+            
+        </div>
+        <div class="right-container">
+             <!-- form  -->
+             <form class="form" action="login.php" method="post">
+                <p class="title">Login </p>
+                <p class="message">Welcome back User to the world of trades </p>
+                    
+                        
+                <label>
+                    <input class="input" type="email" placeholder="Valid Email" name="email">
+            
+                    <span></span>
+                </label> 
+                    
+                <label>
+                    <input class="input" type="password" placeholder="Password" name="password">
+                  
+                    <span></span>
+                </label>
+                <input type="submit" name="submit" value="Submit" class="submit">
+                <p class="signin">New here , <a class="signlink" href="form.html">Sign up</a></p>
+            </form>
+        </div>
+    </div>
+    
+
+</body>
+</html>
