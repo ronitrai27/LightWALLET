@@ -1,13 +1,13 @@
 <?php
 include 'connection.php'; // Include the database connection file
-session_start(); // Start the session
+session_start(); 
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['submit'])) {
-    // Collect form data
+    
     $email = trim($_POST['email']);
     $password = trim($_POST['password']);
 
-    // Initialize an array for errors
+    
     $errors = [];
 
     // Validate email
@@ -20,20 +20,20 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['submit'])) {
         $errors[] = "Password cannot be empty.";
     }
 
-    // If no validation errors, proceed
+ 
     if (empty($errors)) {
-        // Check if the email exists in the database
+  
         $stmt = $conn->prepare("SELECT id, firstname, lastname, password FROM userdetail WHERE email_address = ?");
         $stmt->bind_param("s", $email);
         $stmt->execute();
         $stmt->store_result();
 
         if ($stmt->num_rows > 0) {
-            // Bind the result variables
+         
             $stmt->bind_result($id, $firstname, $lastname, $hashedPassword);
             $stmt->fetch();
 
-            // Verify the entered password with the hashed password
+           
             if (password_verify($password, $hashedPassword)) {
                 // Set session variables
                 $_SESSION['user_id'] = $id;
@@ -51,7 +51,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['submit'])) {
         $stmt->close();
     }
 
-    // If there are errors, display them
+   
     if (!empty($errors)) {
         foreach ($errors as $error) {
             echo "<p style='color: red;'>$error</p>";
