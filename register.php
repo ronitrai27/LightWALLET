@@ -8,7 +8,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['submit'])) {
     $email = trim($_POST['email']);
     $password = trim($_POST['password']);
 
-    // Initialize an array to hold error messages
+    
     $errors = [];
 
     // Validate first name
@@ -59,7 +59,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['submit'])) {
             echo "User registered successfully!";
 
             $userId = $conn->insert_id;
-            $authToken = bin2hex(random_bytes(16)); // Generate a random token for the user
+            $authToken = bin2hex(random_bytes(16)); 
 
             
             setcookie("auth_token", $authToken, time() + 3600, "/", "localhost", false, true);
