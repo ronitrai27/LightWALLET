@@ -10,12 +10,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['submit'])) {
     
     $errors = [];
 
-    // Validate email
     if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
         $errors[] = "Please enter a valid email address.";
     }
 
-    // Validate password
     if (empty($password)) {
         $errors[] = "Password cannot be empty.";
     }
@@ -35,7 +33,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['submit'])) {
 
            
             if (password_verify($password, $hashedPassword)) {
-                // Set session variables
+              
                 $_SESSION['user_id'] = $id;
                 $_SESSION['username'] = $firstname . " " . $lastname;
 
